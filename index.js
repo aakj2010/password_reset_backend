@@ -8,13 +8,16 @@ const cookiParser = require("cookie-parser")
 const port = 8100;
 
 
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
     res.status(201).json("server created")
 });
 
 app.use(express.json());
 app.use(cookiParser());
-app.use(cors({ origin: "*" }));
+app.use(cors({
+    origin: "*",
+    credentials: true
+}));
 app.use(router);
 
 
